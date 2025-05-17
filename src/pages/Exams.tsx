@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ExamQuestion from '@/components/ExamQuestion';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from "@/components/ui/progress";
 
 const Exams = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -48,6 +49,11 @@ const Exams = () => {
     translation: examQuestions.filter(q => q.category === 'translation').length,
     all: examQuestions.length
   };
+
+  // Calculate progress percentage
+  const progressPercentage = examStarted 
+    ? ((currentQuestionIndex + 1) / filteredQuestions.length) * 100 
+    : 0;
 
   return (
     <Layout>
@@ -111,10 +117,12 @@ const Exams = () => {
         </Tabs>
         
         {examStarted && filteredQuestions.length > 1 && (
-          <div className="text-center mb-4">
-            <span className="inline-block px-3 py-1 bg-primary/10 rounded-full text-primary font-medium">
-              Question {currentQuestionIndex + 1} of {filteredQuestions.length}
-            </span>
+          <div className="mb-8 max-w-xl mx-auto">
+            <div className="flex justify-between text-sm text-gray-600 mb-1">
+              <span>Question {currentQuestionIndex + 1} of {filteredQuestions.length}</span>
+              <span>{Math.round(progressPercentage)}% Complete</span>
+            </div>
+            <Progress value={progressPercentage} className="h-2" />
           </div>
         )}
       </div>

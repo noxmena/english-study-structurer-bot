@@ -34,6 +34,7 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ question, onNext, isLast })
 
   // Determine if this is an Arabic-to-English or English-to-Arabic translation question
   const isArabicQuestion = question.question.match(/[\u0600-\u06FF]/); // Check for Arabic characters
+  const hasArabicOptions = question.options.some(option => option.match(/[\u0600-\u06FF]/));
   
   return (
     <Card className="w-full max-w-3xl mx-auto">
@@ -46,9 +47,12 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ question, onNext, isLast })
           }>
             {question.category.charAt(0).toUpperCase() + question.category.slice(1)}
           </Badge>
-          <Flag className="h-4 w-4 text-muted-foreground" />
+          <Flag className="h-4 w-4 text-muted-foreground cursor-pointer" title="Flag this question" />
         </div>
-        <h3 className={`text-lg font-medium ${isArabicQuestion ? 'text-right' : ''}`} dir={isArabicQuestion ? 'rtl' : 'ltr'}>
+        <h3 
+          className={`text-lg font-medium ${isArabicQuestion ? 'text-right' : ''} whitespace-pre-wrap`} 
+          dir={isArabicQuestion ? 'rtl' : 'ltr'}
+        >
           {question.question}
         </h3>
       </CardHeader>
@@ -63,6 +67,7 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ question, onNext, isLast })
             const isCorrectOption = option === question.correctAnswer;
             const showCorrect = showFeedback && isCorrectOption;
             const showIncorrect = showFeedback && isOption && !isCorrectOption;
+            const hasArabicText = option.match(/[\u0600-\u06FF]/);
             
             return (
               <div 
@@ -72,16 +77,17 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ question, onNext, isLast })
                   showIncorrect ? "bg-red-50 border border-red-200" :
                   "hover:bg-gray-50"
                 }`}
-                dir={option.match(/[\u0600-\u06FF]/) ? 'rtl' : 'ltr'}
+                dir={hasArabicText ? 'rtl' : 'ltr'}
               >
                 <RadioGroupItem
                   value={option}
                   id={`option-${question.id}-${index}`}
                   disabled={showFeedback}
+                  className={hasArabicText ? 'ml-2' : 'mr-2'}
                 />
                 <Label
                   htmlFor={`option-${question.id}-${index}`}
-                  className={`flex-grow cursor-pointer py-1 ${option.match(/[\u0600-\u06FF]/) ? 'text-right' : ''}`}
+                  className={`flex-grow cursor-pointer py-1 ${hasArabicText ? 'text-right' : ''} whitespace-pre-wrap`}
                 >
                   {option}
                 </Label>
@@ -99,7 +105,12 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ question, onNext, isLast })
         {showFeedback && (
           <div className={`mt-4 p-3 rounded ${isCorrect ? "bg-green-50 text-green-800" : "bg-red-50 text-red-800"}`}>
             <p className="font-medium">{isCorrect ? "Correct!" : "Incorrect!"}</p>
-            {question.explanation && <p className="text-sm mt-1">{question.explanation}</p>}
+            {question.explanation && (
+              <p className={`text-sm mt-1 ${question.explanation.match(/[\u0600-\u06FF]/) ? 'text-right' : ''}`} 
+                dir={question.explanation.match(/[\u0600-\u06FF]/) ? 'rtl' : 'ltr'}>
+                {question.explanation}
+              </p>
+            )}
           </div>
         )}
       </CardContent>

@@ -1,4 +1,3 @@
-
 export interface ExamQuestion {
   id: number;
   question: string;
@@ -129,7 +128,6 @@ export const examQuestions: ExamQuestion[] = [
     category: "vocabulary",
     explanation: "Films win awards, not rewards, presents, or prices."
   },
-  // Adding more exam questions would follow the same pattern
   {
     id: 16,
     question: "Your goals should be specific, measurable and time-...........; they should be met by a specific date.",
@@ -175,7 +173,6 @@ export const examQuestions: ExamQuestion[] = [
     category: "translation",
     explanation: "This is the most accurate Arabic translation of the given English sentence."
   },
-  // Adding new questions based on provided vocabulary and grammar
   {
     id: 21,
     question: "A/An ......... is a building or structure with parts that turn around in the wind, used for producing electrical power or crushing grain.",
@@ -505,6 +502,226 @@ export const examQuestions: ExamQuestion[] = [
     correctAnswer: "where",
     category: "grammar",
     explanation: "We use 'where' as a relative pronoun for places."
+  },
+  {
+    id: 61,
+    question: "Many people believe that ……………. is a key to success.",
+    options: ["confirmation", "presentation", "relation", "determination"],
+    correctAnswer: "determination",
+    category: "vocabulary",
+    explanation: "'Determination' means having a firm decision to do something and is considered essential for success."
+  },
+  {
+    id: 62,
+    question: "Oil will dry up in the future so all the countries should look for suitable -----------------",
+    options: ["alternatives", "petrol", "alteration", "allocation"],
+    correctAnswer: "alternatives",
+    category: "vocabulary",
+    explanation: "'Alternatives' are other options or choices when the primary resource is no longer available."
+  },
+  {
+    id: 63,
+    question: "My father ……………in Alexandria when he was a boy.",
+    options: ["Living", "used to live", "is used to living", "use to live"],
+    correctAnswer: "used to live",
+    category: "grammar",
+    explanation: "'Used to + infinitive' is the correct form to talk about past regular actions or states that are no longer true."
+  },
+  {
+    id: 64,
+    question: "I've booked the tickets. I ………………next week.",
+    options: ["travel", "will travel", "am travelling", "have travelled"],
+    correctAnswer: "am travelling",
+    category: "grammar",
+    explanation: "Present continuous is used for future arrangements that are already planned and scheduled."
+  },
+  {
+    id: 65,
+    question: "The internet has made a ……………….change in our life.",
+    options: ["bad", "worse", "significant", "useless"],
+    correctAnswer: "significant",
+    category: "vocabulary",
+    explanation: "'Significant' means important or notable, describing the major impact of the internet."
+  },
+  {
+    id: 66,
+    question: "I expect that I-----------------------the essay by 7 o'clock tomorrow.",
+    options: ["will have finished", "have finished", "have been finished", "had finished"],
+    correctAnswer: "will have finished",
+    category: "grammar",
+    explanation: "Future perfect tense (will have + past participle) is used for actions that will be completed by a certain time in the future."
+  },
+  {
+    id: 67,
+    question: "\--------------------- is the money that is given to help pay for their education.",
+    options: ["friendship", "Scholarship", "Steamship", "Hardship"],
+    correctAnswer: "Scholarship",
+    category: "vocabulary",
+    explanation: "A 'Scholarship' is financial aid provided to students for their education."
+  },
+  {
+    id: 68,
+    question: "This pizza …………….delicious.",
+    options: ["is tasting", "tasty", "tasteful", "tastes"],
+    correctAnswer: "tastes",
+    category: "grammar",
+    explanation: "With stative verbs like 'taste', we use the simple form (tastes) not the continuous form."
+  },
+  {
+    id: 69,
+    question: "Hala used to be thin, but now she …………...",
+    options: ["doesn't", "hasn't", "isn't", "is"],
+    correctAnswer: "isn't",
+    category: "grammar",
+    explanation: "To complete the contrast with 'used to be thin', we need 'isn't' (is not) to indicate she is not thin now."
+  },
+  {
+    id: 70,
+    question: "My wife needs to hire a ---------------------- to help her with the housework.",
+    options: ["doctor", "maid", "plumber", "midwife"],
+    correctAnswer: "maid",
+    category: "vocabulary",
+    explanation: "A 'maid' is hired to help with housework and cleaning."
+  },
+  {
+    id: 71,
+    question: "How ………………you feeling today?",
+    options: ["do", "is", "were", "are"],
+    correctAnswer: "are",
+    category: "grammar",
+    explanation: "'How are you feeling' is the correct form for asking about someone's current state or feelings."
+  },
+  {
+    id: 72,
+    question: "The sky is clear. I think it…………………… a sunny day.",
+    options: ["will be", "will have been", "is going to be", "is"],
+    correctAnswer: "is going to be",
+    category: "grammar",
+    explanation: "We use 'going to' for predictions based on present evidence (the clear sky)."
+  },
+  {
+    id: 73,
+    question: "\-------------------- inhabitants are the people who first lived in a country.",
+    options: ["Native", "International", "Foreign", "Aliens"],
+    correctAnswer: "Native",
+    category: "vocabulary",
+    explanation: "'Native inhabitants' refers to the original or indigenous people of a place."
+  },
+  {
+    id: 74,
+    question: "Why don't we protect the --------------- of forests and keep the natural balance?",
+    options: ["division", "disaster", "biodiversity", "affliction"],
+    correctAnswer: "biodiversity",
+    category: "vocabulary",
+    explanation: "'Biodiversity' refers to the variety of plant and animal life in a particular habitat."
+  },
+  {
+    id: 75,
+    question: "The knife is used to---------------meat and other food.",
+    options: ["cut", "cutting", "have cut", "cuts"],
+    correctAnswer: "cut",
+    category: "grammar",
+    explanation: "After 'to' we use the base form of the verb (infinitive)."
+  },
+  {
+    id: 76,
+    question: "Most problems ----------------- from poverty and ignorance.",
+    options: ["however", "rise", "however", "arise"],
+    correctAnswer: "arise",
+    category: "vocabulary",
+    explanation: "'Arise from' is the correct phrasal verb meaning 'to originate from' or 'to be caused by'."
+  },
+  {
+    id: 77,
+    question: "The …………… of the Cairo Metro adds seven kilometres and six new stations to the underground network.",
+    options: ["connects", "expansion", "high-tech", "connect", "people", "lines"],
+    correctAnswer: "expansion",
+    category: "vocabulary",
+    explanation: "'Expansion' refers to the enlargement or extension of the metro network."
+  },
+  {
+    id: 78,
+    question: "Line 3 will help …………… in the east of the city to get to work faster.",
+    options: ["connects", "expansion", "high-tech", "connect", "people", "lines"],
+    correctAnswer: "people",
+    category: "vocabulary",
+    explanation: "Line 3 of the metro helps 'people' to commute more efficiently."
+  },
+  {
+    id: 79,
+    question: "من المعروف أن وسائل المواصلات التقليدية تؤثر على البيئة بشكل خطير جدا، لذا يجب علينا أن نستعمل وسائل مواصلات أخرى صديقة للبيئة.",
+    options: [
+      "It is known that traditional transportation affects the environment very seriously, so we must use other environmentally friendly means of transportation.",
+      "It is said that public transportation affects the environment negatively, so we should use private cars.",
+      "Modern transportation methods have a terrible effect on the environment, so we need new solutions.",
+      "Public transport is dangerous for the environment, so we should use alternative transportation."
+    ],
+    correctAnswer: "It is known that traditional transportation affects the environment very seriously, so we must use other environmentally friendly means of transportation.",
+    category: "translation",
+    explanation: "This is the most accurate translation of the Arabic sentence about traditional transportation's environmental impact."
+  },
+  {
+    id: 80,
+    question: "إن منتدى الشباب الذى يُعقد فى مصر كل عام هو فرصة كبيرة للشباب من مختلف دول العالم أن يلتقوا، وهذا بالتأكيد سيؤدي إلى زيادة التفاهم والتسامح.",
+    options: [
+      "The youth forum held in Egypt every year is a great opportunity for young people from different countries of the world to meet, and this will definitely lead to increased understanding and tolerance.",
+      "The annual festival in Egypt is a chance for people to understand each other better.",
+      "Egyptian youth organize a meeting every year to promote peace and cooperation between nations.",
+      "International youth can participate in Egyptian forums to learn more about the culture."
+    ],
+    correctAnswer: "The youth forum held in Egypt every year is a great opportunity for young people from different countries of the world to meet, and this will definitely lead to increased understanding and tolerance.",
+    category: "translation",
+    explanation: "This is the accurate translation of the Arabic text about the annual youth forum in Egypt."
+  },
+  {
+    id: 81,
+    question: "A lot of people suffer from a shortage of food. Thus, we should have sustainable agricultural projects to feed everyone.",
+    options: [
+      "يعاني كثير من الناس من نقص الطعام. لذلك، ينبغي أن يكون لدينا مشاريع زراعية مستدامة لإطعام الجميع.",
+      "الكثير من الناس يعانون من قلة الأكل. لذلك، علينا مساعدتهم في إيجاد طعام صحي.",
+      "المجاعة مشكلة كبيرة في العالم. لذلك، علينا تنمية المشاريع الزراعية.",
+      "كثير من الناس لديهم مشكلة في الحصول على الغذاء. لهذا نقوم بالعديد من الاعمال الخيرية."
+    ],
+    correctAnswer: "يعاني كثير من الناس من نقص الطعام. لذلك، ينبغي أن يكون لدينا مشاريع زراعية مستدامة لإطعام الجميع.",
+    category: "translation",
+    explanation: "This Arabic translation accurately conveys the English sentence about food shortage and sustainable agriculture."
+  },
+  {
+    id: 82,
+    question: "Many people travel abroad for many different reasons but the majority travel to look for better living conditions.",
+    options: [
+      "كثير من الناس يسافرون للخارج لأسباب مختلفة لكن الغالبية يسافرون للبحث عن ظروف معيشية أفضل.",
+      "الناس يحبون السفر الى الخارج لأسباب متعددة وأهمها للعمل وتحسين الظروف.",
+      "معظم الناس يسافرون لاكتشاف ثقافات جديدة والبعض يسافر لتحسين ظروفه المعيشية.",
+      "يسافر الكثير من الناس حول العالم للسياحة والاستجمام وليس للعمل."
+    ],
+    correctAnswer: "كثير من الناس يسافرون للخارج لأسباب مختلفة لكن الغالبية يسافرون للبحث عن ظروف معيشية أفضل.",
+    category: "translation",
+    explanation: "This is the correct Arabic translation of the English sentence about people traveling abroad."
+  },
+  {
+    id: 83,
+    question: "ــــــــــــــــــــــــــ systems were used to build this 21st-century public transport system.",
+    options: ["connects", "expansion", "high-tech", "connect", "people", "lines"],
+    correctAnswer: "high-tech",
+    category: "vocabulary",
+    explanation: "'High-tech' systems refers to advanced technological systems used in modern transportation."
+  },
+  {
+    id: 84,
+    question: "By 2030, we expect to have built three more new ــــــــــــــــــــــ to bring the total number to six.",
+    options: ["connects", "expansion", "high-tech", "connect", "people", "lines"],
+    correctAnswer: "lines",
+    category: "vocabulary",
+    explanation: "'Lines' refers to the metro lines or routes in the public transportation system."
+  },
+  {
+    id: 85,
+    question: "Line 3 ــــــــــــــــــــــــ Heliopolis and the central station of Adly Mansour.",
+    options: ["connects", "expansion", "high-tech", "connect", "people", "lines"],
+    correctAnswer: "connects",
+    category: "vocabulary",
+    explanation: "'Connects' is the correct verb form to describe how the metro line joins or links two locations."
   }
 ]
 
@@ -516,4 +733,3 @@ export const getExamCategories = () => {
     { id: "translation", name: "Translation" }
   ];
 };
-
