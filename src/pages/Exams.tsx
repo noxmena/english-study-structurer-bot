@@ -7,6 +7,7 @@ import { examQuestions, getExamCategories } from '@/data/examData';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ExamQuestion from '@/components/ExamQuestion';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const Exams = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +41,14 @@ const Exams = () => {
     }
   };
 
+  // Count questions by category
+  const countByCategory = {
+    vocabulary: examQuestions.filter(q => q.category === 'vocabulary').length,
+    grammar: examQuestions.filter(q => q.category === 'grammar').length,
+    translation: examQuestions.filter(q => q.category === 'translation').length,
+    all: examQuestions.length
+  };
+
   return (
     <Layout>
       <div className="max-w-5xl mx-auto">
@@ -65,7 +74,12 @@ const Exams = () => {
           <div className="flex justify-center">
             <TabsList>
               {getExamCategories().map(category => (
-                <TabsTrigger key={category.id} value={category.id}>{category.name}</TabsTrigger>
+                <TabsTrigger key={category.id} value={category.id}>
+                  {category.name}
+                  <Badge variant="outline" className="ml-2 bg-primary/10">
+                    {countByCategory[category.id as keyof typeof countByCategory]}
+                  </Badge>
+                </TabsTrigger>
               ))}
             </TabsList>
           </div>
@@ -97,8 +111,10 @@ const Exams = () => {
         </Tabs>
         
         {examStarted && filteredQuestions.length > 1 && (
-          <div className="text-center text-sm text-gray-500 mb-4">
-            Question {currentQuestionIndex + 1} of {filteredQuestions.length}
+          <div className="text-center mb-4">
+            <span className="inline-block px-3 py-1 bg-primary/10 rounded-full text-primary font-medium">
+              Question {currentQuestionIndex + 1} of {filteredQuestions.length}
+            </span>
           </div>
         )}
       </div>
