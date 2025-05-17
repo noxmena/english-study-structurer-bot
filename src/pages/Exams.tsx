@@ -1,0 +1,109 @@
+
+import React, { useState } from 'react';
+import Layout from '@/components/Layout';
+import { Input } from '@/components/ui/input';
+import { Search } from 'lucide-react';
+import { examQuestions, getExamCategories } from '@/data/examData';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ExamQuestion from '@/components/ExamQuestion';
+import { Button } from '@/components/ui/button';
+
+const Exams = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [examStarted, setExamStarted] = useState(false);
+  
+  // Filter questions based on search term and category
+  const filteredQuestions = examQuestions.filter(question => 
+    (question.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    question.options.some(option => option.toLowerCase().includes(searchTerm.toLowerCase()))) &&
+    (activeCategory === "all" || question.category === activeCategory)
+  );
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setCurrentQuestionIndex(0);
+    setExamStarted(false);
+  };
+
+  const handleStartExam = () => {
+    setExamStarted(true);
+    setCurrentQuestionIndex(0);
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < filteredQuestions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      setExamStarted(false);
+    }
+  };
+
+  return (
+    <Layout>
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-3xl font-bold mb-2 text-center">English Exam Practice</h1>
+        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
+          Test your English knowledge with these practice questions. Choose a category and start practicing!
+        </p>
+        
+        <div className="relative mb-8 max-w-md mx-auto">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Search questions..."
+            className="pl-10"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              setExamStarted(false);
+            }}
+          />
+        </div>
+        
+        <Tabs defaultValue="all" className="mb-8" onValueChange={handleCategoryChange} value={activeCategory}>
+          <div className="flex justify-center">
+            <TabsList>
+              {getExamCategories().map(category => (
+                <TabsTrigger key={category.id} value={category.id}>{category.name}</TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+          
+          {getExamCategories().map(category => (
+            <TabsContent key={category.id} value={category.id}>
+              {!examStarted ? (
+                filteredQuestions.length > 0 ? (
+                  <div className="text-center py-6">
+                    <p className="mb-4">
+                      {filteredQuestions.length} question{filteredQuestions.length !== 1 ? 's' : ''} available in this category.
+                    </p>
+                    <Button onClick={handleStartExam}>Start Practice Exam</Button>
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-gray-500">No questions found for "{searchTerm}" in this category.</p>
+                  </div>
+                )
+              ) : (
+                <ExamQuestion 
+                  question={filteredQuestions[currentQuestionIndex]} 
+                  onNext={handleNextQuestion} 
+                  isLast={currentQuestionIndex === filteredQuestions.length - 1}
+                />
+              )}
+            </TabsContent>
+          ))}
+        </Tabs>
+        
+        {examStarted && filteredQuestions.length > 1 && (
+          <div className="text-center text-sm text-gray-500 mb-4">
+            Question {currentQuestionIndex + 1} of {filteredQuestions.length}
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
+};
+
+export default Exams;
